@@ -1,0 +1,150 @@
+
+<div class="container app">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="text-center">{{ title }}</h1>
+    </div>
+    <div class="col-sm-4">
+      <div *ngIf="msg" class="alert alert-success alert-dismissable">
+        <a href="#" class="close" (click)="closeAlert()">
+          &times;
+        </a>
+        {{msg}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col sm-4">
+          <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+      </div>
+      <div class="class col sm-8">
+        <h2>Create Data:</h2>
+        <form class="form-horizontal">
+
+          <!--Name-->
+          <div class="form-group">
+            <label for="name" class="control-label col-sm-2">
+              Nombre
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" 
+              id="name" name="name" [(ngModel)]="model.name"
+              placeholder="Ingrese un nuevo nombre">
+            </div>
+          </div>
+
+          <!--Position-->
+          <div class="form-group">
+              <label for="position" class="control-label col-sm-2">
+                posición
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" 
+                id="position" name="position" [(ngModel)]="model.position"
+                placeholder="Ingrese una nueva posición">
+              </div>
+            </div>
+  
+          <!--Email-->
+          <div class="form-group">
+              <label for="email" class="control-label col-sm-2">
+                Email
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" 
+                id="email" name="email" [(ngModel)]="model.email"
+                placeholder="Ingrese un nuevo correo">
+              </div>
+            </div>
+  
+        <!--Boton-->
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button type="submit" class="btn btn-success" (click)="addEmployee()" >
+                Save
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>Leer datos:</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>posición</th>
+            <th>Correo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees; let i=index" >
+            <td>{{employee.name}}</td>
+            <td>{{employee.position}}</td>
+            <td>{{employee.email}}</td>
+            <td>
+              <a (click)="editEmployee(i)" class="btn btn-success">Editar</a>
+              <a (click)="deleteEmployee(i)" class="btn btn-danger" >Borrar</a>
+              <a></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="class col sm-4" [hidden]="hideFlag">
+        <h2>Actualizar Datos:</h2>
+        <form class="form-horizontal">
+
+          <!--Name-->
+          <div class="form-group">
+            <label for="name" class="control-label col-sm-2">
+              Nombre
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" 
+              id="name" name="name" [(ngModel)]="model2.name"
+              placeholder="Ingrese un nuevo nombre">
+            </div>
+          </div>
+
+          <!--Position-->
+          <div class="form-group">
+              <label for="position" class="control-label col-sm-2">
+                posición
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" 
+                id="position" name="position" [(ngModel)]="model2.position"
+                placeholder="Ingrese una nueva posición">
+              </div>
+            </div>
+  
+          <!--Email-->
+          <div class="form-group">
+              <label for="email" class="control-label col-sm-2">
+                Email
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" 
+                id="email" name="email" [(ngModel)]="model2.email"
+                placeholder="Ingrese un nuevo correo">
+              </div>
+            </div>
+  
+        <!--Boton-->
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button type="submit" class="btn btn-success" (click)="updateEmployee(i)" >
+                Save
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+  </div>
+</div>
